@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: system-ui, sans-serif;
+}
+
+.app-bg {
+  background: radial-gradient(circle at top, rgba(34, 197, 94, .15), transparent 60%),
+    radial-gradient(circle at bottom, rgba(56, 189, 248, .12), transparent 60%);
+}
+/* Top navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 16px 32px;
+  background: #020617;
+}
+
+/* Logo container */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+/* Wrap the S + glow */
+.logo-wrap {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+/* The S circle */
+.logo-mark {
+  position: relative;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  background: #00e887;
+  color: #020617;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* STRONG glow – we’ll tone it down later if needed */
+.logo-circle {
+  position: absolute;
+  inset: -14px;
+  background: radial-gradient(circle, rgba(0, 255, 150, 1), transparent 70%);
+  filter: blur(16px);
+  border-radius: 999px;
+  opacity: 1;
+}
+
+/* “SigSecure” text */
+.logo-text {
+  color: #e5e7eb;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  font-size: 0.95rem;
+}
+/* Sidebar layout + styles */
+.app-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr; /* sidebar + content */
+  gap: 20px;
+  min-height: calc(100vh - 0px);
+  padding: 20px;
+}
+
+/* collapsed layout */
+.app-layout.sidebar-collapsed {
+  grid-template-columns: 72px 1fr;
+}
+
+/* Sidebar base */
+.sidebar {
+  background: linear-gradient(180deg, rgba(10,12,18,0.9), rgba(6,8,12,0.9));
+  border-radius: 14px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.48);
+  border: 1px solid rgba(255,255,255,0.02);
+}
+
+/* collapsed state */
+.sidebar--collapsed {
+  padding: 8px;
+}
+
+/* brand area */
+.sidebar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.brand-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #00e887, #02b06b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #021014;
+  font-size: 1.05rem;
+}
+
+.brand-text {
+  font-weight: 700;
+  color: #eef2ff;
+  letter-spacing: 0.02em;
+}
+
+/* collapse button */
+.collapse-btn {
+  background: transparent;
+  border: none;
+  color: #aeb8c2;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+}
+.collapse-btn:hover { background: rgba(255,255,255,0.02); }
+
+/* nav list and items */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+  flex: 1;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  background: transparent;
+  color: #cbd5e1;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 160ms ease, transform 120ms ease;
+}
+.nav-item:hover {
+  background: rgba(255,255,255,0.03);
+  transform: translateY(-2px);
+}
+
+.nav-item--active {
+  background: linear-gradient(90deg, rgba(0,255,150,0.08), rgba(0,200,200,0.04));
+  color: #e6fffa;
+  box-shadow: inset 0 0 0 1px rgba(0,255,150,0.03);
+}
+
+.nav-icon {
+  width: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+.nav-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* collapsed item compact */
+.nav-item--collapsed {
+  justify-content: center;
+  padding: 8px;
+}
+.nav-item--collapsed .nav-label { display: none; }
+
+/* footer */
+.sidebar-footer {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255,255,255,0.02);
+  margin-top: 8px;
+  text-align: center;
+}
+
+.footer-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 99px;
+  background: rgba(0,255,150,0.7);
+  margin: 0 auto;
+}
+
+/* Responsive: collapse automatically on small screens */
+@media (max-width: 880px) {
+  .app-layout {
+    grid-template-columns: 72px 1fr;
+  }
+  .sidebar .brand-text, .logo-text { display: none; }
+}

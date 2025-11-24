@@ -1,0 +1,367 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: #e5e7eb;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  border-bottom: 1px solid #1f2937;
+  background: rgba(3, 7, 18, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 0.75rem 1.5rem;
+}
+
+.navbar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.brand-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 0.75rem;
+  background: #22c55e;
+  color: #020617;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
+.nav-sub {
+  font-size: 0.7rem;
+  color: #9ca3af;
+}
+
+.main-container {
+  flex: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 1.75rem;
+}
+
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  border-radius: 24px;
+  padding: 24px;
+  background: radial-gradient(circle at top left, #111827, #020617);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.card-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.card-subtitle {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin-bottom: 1.25rem;
+}
+
+.upload-box {
+  border: 1px dashed #4b5563;
+  border-radius: 0.9rem;
+  padding: 1.5rem;
+  text-align: center;
+  background: #020617;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.1s ease;
+  font-size: 0.9rem;
+}
+
+.upload-box:hover {
+  border-color: #22c55e;
+  background: #020617;
+  transform: translateY(-1px);
+}
+
+.upload-filename {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.button-primary {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.7rem 1rem;
+  border-radius: 0.7rem;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #22c55e;
+  color: #020617;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.button-primary:hover {
+  background: #16a34a;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.35);
+}
+
+.button-primary:disabled {
+  opacity: 0.5;
+  cursor: default;
+  box-shadow: none;
+  transform: none;
+}
+
+.result-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.result-placeholder {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.result-section {
+  background: #020617;
+  border-radius: 0.75rem;
+  padding: 0.8rem 0.9rem;
+  margin-top: 0.7rem;
+  font-size: 0.8rem;
+}
+
+.result-section h3 {
+  font-size: 0.85rem;
+  margin: 0 0 0.4rem 0;
+  color: #e5e7eb;
+}
+
+.result-row {
+  margin: 0.15rem 0;
+  color: #d1d5db;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.badge-type {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+}
+
+.badge-valid {
+  background: rgba(34, 197, 94, 0.2);
+  color: #bbf7d0;
+}
+
+.badge-invalid {
+  background: rgba(248, 113, 113, 0.2);
+  color: #fecaca;
+}
+
+.status-valid {
+  color: #4ade80;
+}
+
+.status-invalid {
+  color: #fca5a5;
+}
+
+.error-box {
+  background: rgba(127, 29, 29, 0.6);
+  border-radius: 0.75rem;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.8rem;
+  margin-bottom: 0.7rem;
+  color: #fecaca;
+}
+
+.footer {
+  border-top: 1px solid #111827;
+  padding: 0.75rem 0;
+  text-align: center;
+  font-size: 0.7rem;
+  color: #6b7280;
+  background: #020617;
+}
+/* success / failure animation on text badges */
+@keyframes pulse-valid {
+  0% { transform: scale(0.95); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pulse-invalid {
+  0% { transform: scale(1.05); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* You probably already have .status-valid / .status-invalid.
+   Add these properties to them (or edit the existing ones). */
+
+.status-valid {
+  color: #4ade80;            /* green */
+  font-weight: 500;
+  animation: pulse-valid 0.4s ease;
+}
+
+.status-invalid {
+  color: #f97373;            /* red */
+  font-weight: 500;
+  animation: pulse-invalid 0.4s ease;
+}
+.skeleton-loader {
+  height: 90px;
+  border-radius: 12px;
+  margin-top: 12px;
+  background: linear-gradient(
+    90deg,
+    #111827 0px,
+    #1f2937 80px,
+    #111827 160px
+  );
+  background-size: 600px;
+  animation: shimmer 1.2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
+}
+@keyframes card-in {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* when result exists */
+.card.card--has-result {
+  animation: card-in 0.25s ease-out;
+}
+
+.upload-filename {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+}
+
+.upload-meta {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+.advanced-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.advanced-container.open {
+  max-height: 500px; /* big enough to fit content */
+}
+/* Top navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 16px 32px;
+  background: #020617; /* matches your dark theme */
+}
+
+/* Logo block */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+/* Wrapper around the "S" circle + glow */
+.logo-wrap {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+/* The main "S" circle */
+.logo-mark {
+  position: relative;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: #00e887;
+  color: #020617;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Glowing halo behind the S */
+.logo-circle {
+  position: absolute;
+  inset: -8px;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle,
+    rgba(16, 185, 129, 0.7),
+    transparent 70%
+  );
+  filter: blur(10px);
+  opacity: 0.9;
+}
+
+/* "SigSecure" text */
+.logo-text {
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #e5e7eb;
+  font-size: 0.95rem;
+}
