@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SigSecure Upload</title>
+    <style>
+      body { font-family: system-ui, -apple-system, Roboto, "Segoe UI", Arial; padding: 28px; }
+      .card { max-width: 640px; margin: 24px auto; padding: 18px; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
+      input[type="file"] { display:block; margin: 12px 0 18px; }
+      button { padding: 10px 16px; border-radius: 8px; border: none; cursor: pointer; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>SigSecure — Upload a PDF for verification</h2>
+      <form action="http://127.0.0.1:5001/api/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".pdf,.docx" required />
+        <button type="submit">Upload</button>
+      </form>
+      <p>After uploading the server will respond with JSON. You can also use the terminal for uploads.</p>
+      <p><small>If you want the page served from the Flask app instead of opening the file, we'll add a /upload route next.</small></p>
+    </div>
+  </body>
+</html>
